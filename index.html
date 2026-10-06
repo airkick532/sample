@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Hosting Test</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Official Pyodide CDN -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Main Header -->
+    <header class="header">
+      <h1>Static Hosting Test</h1>
+      <p class="subtitle">GitHub Pages Verification &amp; Pyodide Browser Runtime</p>
+    </header>
+
+    <!-- Overall Status Banner -->
+    <div id="overall-banner" class="banner loading">
+      <span id="banner-text">RUNNING CHECKS...</span>
+    </div>
+
+    <!-- 4 Automatic System Checks -->
+    <section class="card">
+      <h2>Automatic System Checks</h2>
+      <ul class="check-list">
+        <li class="check-item">
+          <span class="check-label">a) Page loaded (HTML + CSS + JS loaded)</span>
+          <span id="check-page-load" class="badge badge-pending">PENDING</span>
+        </li>
+        <li class="check-item">
+          <span class="check-label">b) health.json fetched and status == "ok"</span>
+          <span id="check-health" class="badge badge-pending">PENDING</span>
+        </li>
+        <li class="check-item">
+          <span class="check-label">c) Pyodide loaded</span>
+          <span id="check-pyodide" class="badge badge-pending">PENDING</span>
+        </li>
+        <li class="check-item">
+          <span class="check-label">d) app.py executed successfully</span>
+          <span id="check-app-py" class="badge badge-pending">PENDING</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Diagnostics / Metadata -->
+    <section class="card">
+      <h2>System &amp; Page Diagnostics</h2>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <strong>Current URL:</strong>
+          <span id="meta-url">-</span>
+        </div>
+        <div class="meta-item">
+          <strong>Page Load Time:</strong>
+          <span id="meta-load-time">-</span>
+        </div>
+        <div class="meta-item">
+          <strong>Browser Date/Time:</strong>
+          <span id="meta-datetime">-</span>
+        </div>
+        <div class="meta-item">
+          <strong>Python Runtime Info:</strong>
+          <span id="meta-python-info">Initializing...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Pyodide Demo Form -->
+    <section class="card">
+      <h2>Python Calculator Demo</h2>
+      <p class="section-desc">Calculates sum and product in real-time via <code>app.py</code> executed inside your browser.</p>
+      
+      <form id="calc-form" class="calc-form">
+        <div class="form-group">
+          <label for="num1">Number 1</label>
+          <input type="number" id="num1" value="12" step="any" required>
+        </div>
+        <div class="form-group">
+          <label for="num2">Number 2</label>
+          <input type="number" id="num2" value="5" step="any" required>
+        </div>
+        <button type="submit" id="calc-btn" disabled>Calculate</button>
+      </form>
+
+      <div id="calc-result" class="result-box hidden">
+        <div class="result-item"><strong>Sum:</strong> <span id="res-sum">-</span></div>
+        <div class="result-item"><strong>Product:</strong> <span id="res-product">-</span></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>100% Static Web Verification &bull; GitHub Pages Ready</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
